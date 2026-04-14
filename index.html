@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🍔 SnackStore - Catálogo de Comidas</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="header-principal">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">🍔</span>
+          <h1>Snack<span class="destaque">Store</span></h1>
+        </div>
+        <nav class="nav-header">
+          <a href="#vitrine" class="nav-link">Produtos</a>
+          <a href="#sobre" class="nav-link">Sobre</a>
+          <a href="login.html" class="nav-link btn-lojista"
+            >🔒 Área do Lojista</a
+          >
+        </nav>
+        <button class="menu-mobile" id="menu-mobile" onclick="toggleMenu()">
+          ☰
+        </button>
+      </div>
+      <div class="nav-mobile" id="nav-mobile">
+        <a href="#vitrine" class="nav-link" onclick="toggleMenu()">Produtos</a>
+        <a href="#sobre" class="nav-link" onclick="toggleMenu()">Sobre</a>
+        <a href="login.html" class="nav-link">🔒 Área do Lojista</a>
+      </div>
+    </header>
+
+    <!-- HERO BANNER -->
+    <section class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <p class="hero-subtitulo">🔥 Os melhores snacks em um só lugar</p>
+        <h2 class="hero-titulo">
+          Mate sua fome <span class="destaque">agora!</span>
+        </h2>
+        <p class="hero-descricao">
+          Refrigerantes gelados, salgadinhos crocantes e muito mais. Confira
+          nosso catálogo completo.
+        </p>
+        <a href="#vitrine" class="btn-hero">Ver Catálogo ↓</a>
+      </div>
+      <div class="hero-shapes">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+      </div>
+    </section>
+
+    <!-- CATEGORIAS -->
+    <section class="secao-categorias">
+      <div class="container">
+        <div class="categorias-grid">
+          <button class="cat-btn ativo" onclick="filtrar('todos', this)">
+            🛍️ Todos
+          </button>
+          <button class="cat-btn" onclick="filtrar('Bebidas', this)">
+            🥤 Bebidas
+          </button>
+          <button class="cat-btn" onclick="filtrar('Salgadinhos', this)">
+            🍿 Salgadinhos
+          </button>
+          <button class="cat-btn" onclick="filtrar('Doces', this)">
+            🍫 Doces
+          </button>
+          <button class="cat-btn" onclick="filtrar('Biscoitos', this)">
+            🍪 Biscoitos
+          </button>
+          <button class="cat-btn" onclick="filtrar('Variedades', this)">
+            ✨ Variedades
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- VITRINE -->
+    <section id="vitrine-section" class="secao-vitrine">
+      <div class="container">
+        <div class="secao-header">
+          <h2 class="secao-titulo">
+            Nossos <span class="destaque">Produtos</span>
+          </h2>
+          <p class="secao-subtitulo">Escolha seus favoritos e peça já!</p>
+        </div>
+        <div id="loading" class="loading">
+          <div class="spinner"></div>
+          <p>Carregando produtos...</p>
+        </div>
+        <div id="vitrine" class="grid-produtos"></div>
+        <div id="sem-produtos" class="sem-produtos" style="display: none">
+          <p>😕 Nenhum produto encontrado nessa categoria.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="secao-sobre">
+      <div class="container">
+        <div class="sobre-grid">
+          <div class="sobre-info">
+            <h2 class="secao-titulo">
+              Sobre a <span class="destaque">SnackStore</span>
+            </h2>
+            <p>
+              Somos uma loja virtual especializada nos melhores snacks e bebidas
+              do mercado. Trabalhamos com as marcas mais desejadas para matar
+              sua fome a qualquer hora do dia.
+            </p>
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-numero">15+</span>
+                <span class="stat-label">Produtos</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-numero">5</span>
+                <span class="stat-label">Categorias</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-numero">24h</span>
+                <span class="stat-label">Disponível</span>
+              </div>
+            </div>
+          </div>
+          <div class="sobre-visual">
+            <div class="sobre-card-destaque">
+              <span class="sobre-emoji">🍔🥤🍫</span>
+              <p>Snacks selecionados com carinho!</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h3>
+              <span class="logo-icon">🍔</span> Snack<span class="destaque"
+                >Store</span
+              >
+            </h3>
+            <p>Sua loja de snacks favorita na internet.</p>
+          </div>
+          <div class="footer-col">
+            <h4>Links Rápidos</h4>
+            <a href="#vitrine">Produtos</a>
+            <a href="#sobre">Sobre</a>
+          </div>
+          <div class="footer-col">
+            <h4>Administração</h4>
+            <a href="login.html">🔒 Área do Lojista</a>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>
+            © 2025 SnackStore - Projeto Catálogo em Nuvem | Todos os direitos
+            reservados.
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

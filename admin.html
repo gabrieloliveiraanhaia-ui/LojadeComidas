@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⚙️ Painel Admin - SnackStore</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body class="admin-body">
+    <!-- HEADER ADMIN -->
+    <header class="admin-header">
+      <div class="header-inner">
+        <div class="logo">
+          <span class="logo-icon">⚙️</span>
+          <h1>Painel <span class="destaque">Admin</span></h1>
+        </div>
+        <div class="admin-user-info">
+          <span class="admin-user-badge">
+            👤 <span id="nome-usuario">Carregando...</span>
+          </span>
+          <button onclick="sairDoSistema()" class="btn-sair">🚪 Sair</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <div class="container">
+        <div class="admin-grid">
+          <!-- FORMULÁRIO DE CADASTRO -->
+          <div class="admin-card card-cadastro">
+            <div class="admin-card-header">
+              <h2>➕ Cadastrar Novo Produto</h2>
+              <p>
+                Preencha os campos abaixo para adicionar um item ao catálogo.
+              </p>
+            </div>
+
+            <div class="form-grupo">
+              <label>📦 Nome do Produto</label>
+              <input
+                type="text"
+                id="input-nome"
+                placeholder="Ex: Coca-Cola 350ml"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label>💰 Preço (use ponto para centavos)</label>
+              <input
+                type="number"
+                id="input-preco"
+                step="0.01"
+                placeholder="Ex: 7.50"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label>🖼️ URL da Imagem</label>
+              <input
+                type="text"
+                id="input-imagem"
+                placeholder="Ex: img/coca-cola.png ou link da internet"
+              />
+            </div>
+
+            <div class="form-grupo">
+              <label>🏷️ Categoria</label>
+              <select id="input-categoria">
+                <option value="">Selecione...</option>
+                <option value="Bebidas">🥤 Bebidas</option>
+                <option value="Salgadinhos">🍿 Salgadinhos</option>
+                <option value="Doces">🍫 Doces</option>
+                <option value="Biscoitos">🍪 Biscoitos</option>
+                <option value="Variedades">✨ Variedades</option>
+              </select>
+            </div>
+
+            <button
+              onclick="cadastrarProduto()"
+              class="btn-cadastrar"
+              id="btn-cadastrar"
+            >
+              💾 Salvar no Banco de Dados
+            </button>
+            <p id="mensagem-aviso" class="mensagem-aviso"></p>
+          </div>
+
+          <!-- LISTA DE PRODUTOS CADASTRADOS -->
+          <div class="admin-card card-lista">
+            <div class="admin-card-header">
+              <h2>📋 Produtos Cadastrados</h2>
+              <p>Lista de todos os itens no banco de dados.</p>
+              <button onclick="carregarProdutosAdmin()" class="btn-refresh">
+                🔄 Atualizar Lista
+              </button>
+            </div>
+            <div id="lista-produtos-admin" class="lista-produtos-admin">
+              <div class="loading">
+                <div class="spinner"></div>
+                <p>Carregando...</p>
+              </div>
+            </div>
+            <div class="admin-contador">
+              <p>
+                Total:
+                <span id="total-produtos" class="destaque">0</span> produtos
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAVEGAÇÃO -->
+        <div class="admin-nav-bottom">
+          <a href="index.html" class="btn-voltar-loja"
+            >🏪 Ver Vitrine da Loja</a
+          >
+        </div>
+      </div>
+    </main>
+
+    <script src="admin.js"></script>
+  </body>
+</html>

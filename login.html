@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🔒 Login - SnackStore Admin</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+  <body class="login-body">
+    <div class="login-wrapper">
+      <!-- Lado esquerdo decorativo -->
+      <div class="login-lado-esquerdo">
+        <div class="login-esq-content">
+          <span class="login-emoji-grande">🍔</span>
+          <h2>Snack<span class="destaque">Store</span></h2>
+          <p>
+            Painel de gerenciamento da loja. Acesse com suas credenciais para
+            cadastrar e editar produtos.
+          </p>
+          <div class="login-features">
+            <div class="login-feature-item">✅ Cadastrar produtos</div>
+            <div class="login-feature-item">✅ Gerenciar catálogo</div>
+            <div class="login-feature-item">✅ Atualizar preços</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Lado direito - Formulário -->
+      <div class="login-lado-direito">
+        <div class="login-container">
+          <div class="login-header">
+            <div class="login-icon">🔒</div>
+            <h2>Acesso Restrito</h2>
+            <p>Entre com suas credenciais de administrador</p>
+          </div>
+
+          <div class="form-grupo">
+            <label>📧 E-mail</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="seu@email.com"
+              autocomplete="email"
+            />
+          </div>
+
+          <div class="form-grupo">
+            <label>🔑 Senha</label>
+            <div class="senha-grupo">
+              <input
+                type="password"
+                id="password"
+                placeholder="Digite sua senha"
+                autocomplete="current-password"
+              />
+              <button
+                type="button"
+                onclick="mostrarSenha()"
+                id="btn-olho"
+                class="btn-olho"
+                title="Mostrar/Ocultar senha"
+              >
+                👁️
+              </button>
+            </div>
+          </div>
+
+          <button onclick="fazerLogin()" id="btn-entrar" class="btn-entrar">
+            <span id="btn-entrar-texto">Entrar no Painel</span>
+          </button>
+
+          <p id="mensagem" class="mensagem-login"></p>
+
+          <div class="login-footer-link">
+            <a href="index.html">← Voltar para a Loja</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="login.js"></script>
+  </body>
+</html>
